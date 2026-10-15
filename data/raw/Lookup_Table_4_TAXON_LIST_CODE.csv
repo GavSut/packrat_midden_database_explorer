@@ -1,0 +1,5 @@
+TAXON_LIST_CODE,CODE_DEFINITION
+C,Taxon list is thought to be complete.
+CU,Taxon list exists and is complete but unpublished.
+P,Taxon list is known to be partial.
+PU,Taxon list exists and is only partial and unpublished.

@@ -1,0 +1,189 @@
+{
+  "samples": 3331,
+  "taxa": 1815,
+  "occurrences": 29393,
+  "dates": 3843,
+  "references": 336,
+  "mapped_samples": 3039,
+  "climate_samples": 2929,
+  "missing_reference_ids": [],
+  "join_errors": [],
+  "translation_codes": {
+    "1": 8213,
+    "2": 20143,
+    "9": 142,
+    "0": 895
+  },
+  "selected_age_codes": {
+    "X": 2577,
+    "?": 233,
+    "X1-PA": 102,
+    "": 528,
+    "X1-PA(FST)": 25,
+    "X?": 1,
+    "X2": 2
+  },
+  "case_aliases": {
+    "DG3A": "DG3a",
+    "GSP2a": "GSP2A",
+    "MCWC1A": "MCWC1a",
+    "MCWC1B": "MCWC1b"
+  },
+  "source_files": [
+    {
+      "file": "Linked_Table_10_PLANT_FUNCTIONAL_TYPE.csv",
+      "bytes": 349293,
+      "sha256": "b5edf978d9aaa6e58291fca4a54641cdb383859e02df2e177adfb695a84c480d",
+      "rows": 1815,
+      "encoding": "cp1252"
+    },
+    {
+      "file": "Linked_Table_1_REFERENCE.csv",
+      "bytes": 95495,
+      "sha256": "4b1c098d4cbc81f836f86070ff079d2ea39d16f3a27e1ae65cd4c1f975ea0e14",
+      "rows": 336,
+      "encoding": "cp1252"
+    },
+    {
+      "file": "Linked_Table_2_MIDDEN_SAMPLE.csv",
+      "bytes": 2190658,
+      "sha256": "2d0d7bd827318fee4a2960297ced337011145e8e08ca99f98a8436a3035acd61",
+      "rows": 3331,
+      "encoding": "cp1252"
+    },
+    {
+      "file": "Linked_Table_3_AGEC14.csv",
+      "bytes": 572009,
+      "sha256": "39b0f616062a4e460e614b47b3a876aeb11b03ee8eb06be0b9af98086fb2834c",
+      "rows": 3843,
+      "encoding": "cp1252"
+    },
+    {
+      "file": "Linked_Table_4_MIDDEN_TAXA.csv",
+      "bytes": 251344,
+      "sha256": "c4cb838b45f14bb2b8da26753e87e12854b2c1580c5eec7c76245969691c70e6",
+      "rows": 1815,
+      "encoding": "cp1252"
+    },
+    {
+      "file": "Linked_Table_5_MIDDEN_TAXA_PER_SAMPLE.csv",
+      "bytes": 816368,
+      "sha256": "158c13fa5936ea9506dae8c86a22b3118ae3f9cd6d6a8321ff90e9d41c438319",
+      "rows": 29393,
+      "encoding": "utf-8-sig"
+    },
+    {
+      "file": "Linked_Table_6_CODE_TRANSLATION.csv",
+      "bytes": 325025,
+      "sha256": "dcd745c6375cfd0e7d9d91f6d0e55311d0d8bf9668a7913828163aefe44daca1",
+      "rows": 2572,
+      "encoding": "utf-8-sig"
+    },
+    {
+      "file": "Linked_Table_7_MCOUNT_TRANSLATION.csv",
+      "bytes": 482340,
+      "sha256": "1dab692134fef012e94b96b0712bf2d9c960fefee88afed32edceb342da440f7",
+      "rows": 29393,
+      "encoding": "utf-8-sig"
+    },
+    {
+      "file": "Linked_Table_8_CLIMATE_DATA.csv",
+      "bytes": 1082177,
+      "sha256": "787e7d7b00d8daaf0dca636230ea70070bd2c564b4bf3a57f4bf253cb9b7d89f",
+      "rows": 2929,
+      "encoding": "cp1252"
+    },
+    {
+      "file": "Linked_Table_9_ECOREGION.csv",
+      "bytes": 206807,
+      "sha256": "55632930bd5e8206263fbd35855afe46156282fdf87067dd5b77d40b1097376e",
+      "rows": 3331,
+      "encoding": "utf-8-sig"
+    },
+    {
+      "file": "Lookup_Table_1_USE_STATUS_CODE.csv",
+      "bytes": 466,
+      "sha256": "4d5ecf6479dcece96f7a4d2d030a7b91f71263257566cbcd939022a5a68dcc5e",
+      "rows": 5,
+      "encoding": "utf-8-sig"
+    },
+    {
+      "file": "Lookup_Table_2_0_1_2_CODE.csv",
+      "bytes": 151,
+      "sha256": "01f7f46fa299f7f00d9f762a36749dbc626066edac6f7443cc8a6eba547126f2",
+      "rows": 5,
+      "encoding": "utf-8-sig"
+    },
+    {
+      "file": "Lookup_Table_3_RECOMMENDED_AGE_CODE.csv",
+      "bytes": 937,
+      "sha256": "e579c374872dcdb0271fb808322f08030a09435ccfed62ca46b421b421c8fcce",
+      "rows": 6,
+      "encoding": "utf-8-sig"
+    },
+    {
+      "file": "Lookup_Table_4_TAXON_LIST_CODE.csv",
+      "bytes": 226,
+      "sha256": "0921b1fe2a9ad6834bf114408b9a0773dc2428cd795c5368dfa8f231741a4009",
+      "rows": 4,
+      "encoding": "utf-8-sig"
+    },
+    {
+      "file": "Lookup_Table_5_ECOREGION_CODE.csv",
+      "bytes": 1633,
+      "sha256": "693c091f0a4e78f7481ffd53c5f65c4ab1744fc5fe64b513cce1105fe62b17a0",
+      "rows": 24,
+      "encoding": "utf-8-sig"
+    },
+    {
+      "file": "Lookup_Table_6_PLANT_FUNCTIONAL_TYPE_CODE.csv",
+      "bytes": 927,
+      "sha256": "1a81af23456eb8a2603370b95f405cd2fdc1aa1c4d6124a70a23817c091c4bed",
+      "rows": 24,
+      "encoding": "utf-8-sig"
+    },
+    {
+      "file": "Strickland_and_others_2022_midden_data_release_data_dictionary.csv",
+      "bytes": 53278,
+      "sha256": "5d67e51a4038d08fb55c424b8081b06f564b68be85d6414b58c91ed041eb8f4b"
+    },
+    {
+      "file": "Strickland_and_others_2022_midden_data_release_metadata.txt",
+      "bytes": 56993,
+      "sha256": "a65a578f232722f967503157a9042d061f88f02c2e76cb90f4d8c24e1ddf4845"
+    },
+    {
+      "file": "Strickland_and_others_2022_midden_data_release_readme.txt",
+      "bytes": 18556,
+      "sha256": "fc359693216059bec1a071b8134c4ddce76e3ca6a300bc341e1369938c937420"
+    },
+    {
+      "file": "Unlinked_Table_1_SYNONYMS.csv",
+      "bytes": 38818,
+      "sha256": "27190066815448795992902bc5e424a28611e8dd6358b74e2841b357f7db048f",
+      "rows": 391,
+      "encoding": "utf-8-sig"
+    },
+    {
+      "file": "Unlinked_Table_2_MIDDEN_RELATED_PUBLICATIONS_WITH_NO_SIGNIFICANT_DATA.csv",
+      "bytes": 44718,
+      "sha256": "07a17055eec90e903ca3925e9198de0372ae08cdbea8eeb631550bd8e7425852",
+      "rows": 173,
+      "encoding": "cp1252"
+    },
+    {
+      "file": "Unlinked_Table_3_MIDDEN_RELATED_ABSTRACTS_WITH_NO_SIGNIFICANT_DATA.csv",
+      "bytes": 28640,
+      "sha256": "87466df23f6e13c810d5af0d1c3d3d2fd19e9e64b25ab55b07d2a3b9613c51af",
+      "rows": 92,
+      "encoding": "cp1252"
+    },
+    {
+      "file": "Unlinked_Table_4_MIDDEN_PUBLICATIONS_OUTSIDE_NORTH_AMERICA.csv",
+      "bytes": 5451,
+      "sha256": "5c151051ffef39da924b3687dfe7e04830b112407f38a1ec27e5224d48c03ccd",
+      "rows": 19,
+      "encoding": "cp1252"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+USE_STATUS_CODE,CODE_DEFINITION
+-9,"Data available are sample information, age data, partial taxon list published."
+1,"Data available are sample information, age data, complete taxon list published."
+2,"Data available are sample information, age data, no taxon list."
+3,"Data available are sample information, partial or complete taxon list, no age data."
+4,"Data available are sample information, no taxon list, no age data (information may be unpublished)."
