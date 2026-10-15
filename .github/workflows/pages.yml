@@ -21,10 +21,11 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '22'
+          cache: npm
       - name: Compile original data and audit joins
         run: python scripts/build_data.py
       - name: Install development test dependency
-        run: npm ci --ignore-scripts
+        run: npm ci --ignore-scripts --prefer-offline --no-audit --no-fund
       - name: Validate data, filters and exports
         run: |
           python -m unittest discover -s tests -p 'test_*.py'
