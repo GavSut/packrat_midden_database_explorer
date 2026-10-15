@@ -1,0 +1,8 @@
+{
+  "name": "packrat-midden-explorer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static USGS packrat midden explorer; npm is optional for development tests only",
+  "scripts": {"test": "node tests/test_core.cjs && node tests/test_ui.cjs", "test:core": "node tests/test_core.cjs"},
+  "devDependencies": {"jsdom": "26.1.0"}
+}
