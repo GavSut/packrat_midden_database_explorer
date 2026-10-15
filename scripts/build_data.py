@@ -123,10 +123,36 @@ def build():
        translation_codes=dict(collections.Counter(o['code'] for o in occurrences_flat)),
        selected_age_codes=dict(collections.Counter(a['code'] for s in samples for a in s['ages'])),
        case_aliases=aliases,source_files=sources)
-    data=dict(version='1.0.0',source='USGS North American Packrat Midden Database, Version 5.0 (2022)',
+    data=dict(version='1.1.0',source='USGS North American Packrat Midden Database, Version 5.0 (2022)',
         doi='https://doi.org/10.5066/P91UOARW',aliases=aliases,documents=documents,tables=tables,samples=samples,audit=audit)
-    text=json.dumps(data,ensure_ascii=False,separators=(',',':'),allow_nan=False)
-    (OUT/'database.js').write_text('window.MIDDEN_DATA = '+text+';\n',encoding='utf-8')
+    def compact(rows, columns):
+        return [[row.get(k) for k in columns] for row in rows]
+    def js_file(name, variable, value):
+        text=json.dumps(value,ensure_ascii=False,separators=(',',':'),allow_nan=False)
+        (OUT/name).write_text(variable+' = '+text+';\n',encoding='utf-8')
+    # Send only the exploration index at startup. Raw source tables load on demand.
+    sample_columns=list(samples[0])
+    age_columns=['index','median','low','high','c14','code','infinite','caution']
+    occurrence_columns=['index','varnum','code']
+    climate_columns=next(v['columns'] for k,v in tables.items() if k.startswith('Linked_Table_8_'))
+    climate_columns=[k for k in climate_columns if k not in ['SAMCODE','SITE','COUNTRY','STATE_OR_PROVINCE']]
+    packed=[]
+    for sample in samples:
+        row=dict(sample)
+        for key in ['ages','all_ages']:row[key]=compact(sample[key],age_columns)
+        row['occurrences']=compact(sample['occurrences'],occurrence_columns)
+        row['climate']=[sample['climate'].get(k) for k in climate_columns]
+        packed.append(row)
+    light=dict(data)
+    light.pop('documents')
+    light['samples']=compact(packed,sample_columns)
+    light['packing']=dict(samples=sample_columns,ages=age_columns,occurrences=occurrence_columns,climate=climate_columns)
+    light['tables']={k:dict(v,rows=v['rows'] if k.startswith(('Linked_Table_1_','Linked_Table_4_','Lookup_')) else [],row_count=len(v['rows'])) for k,v in tables.items()}
+    js_file('explorer.js','window.MIDDEN_DATA',light)
+    js_file('details.js','window.MIDDEN_DETAILS',dict(version=data['version'],tables=tables,documents=documents))
+    # Retire the old all-in-one bundle to prevent accidental heavy startup loads.
+    old=OUT/'database.js'
+    if old.exists():old.unlink()
     (OUT/'audit.json').write_text(json.dumps(audit,indent=2)+'\n')
     # Retain original bytes for downloads. No silent encoding/sentinel changes.
     shutil.copytree(RAW,OUT/'raw',dirs_exist_ok=True)

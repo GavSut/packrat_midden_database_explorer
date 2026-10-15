@@ -1,0 +1,2 @@
+const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+module.exports=function(){const ctx={window:{}};const site=path.resolve(__dirname,'../site');for(const f of ['loader.js','data/explorer.js','data/details.js'])vm.runInNewContext(fs.readFileSync(path.join(site,f),'utf8'),ctx);const d=ctx.window.MiddenLoader.hydrate(ctx.window.MIDDEN_DATA);Object.assign(d,ctx.window.MIDDEN_DETAILS);return JSON.parse(JSON.stringify(d));};

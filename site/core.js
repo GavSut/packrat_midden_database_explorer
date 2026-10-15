@@ -3,7 +3,8 @@
 'use strict';
 const defaults={query:'',country:'',state:'',ecoregion:'',listCode:'',useStatus:'',reference:'',taxa:[],logic:'any',evidence:'positive',ageEnabled:false,basis:'cal',ageMode:'point',young:0,old:50000,caution:false,missingAge:false,elevMin:'',elevMax:'',west:'',east:'',south:'',north:'',climateField:'',climateMin:'',climateMax:'',background:true,color:'age',labels:false,base:'outline'};
 const table=(d,n)=>Object.entries(d.tables).find(([k])=>k.startsWith(`Linked_Table_${n}_`))[1];
-const objects=t=>t.rows.map(r=>Object.fromEntries(t.columns.map((c,i)=>[c,r[i]])));
+const objectCache=new WeakMap();
+const objects=t=>{if(!objectCache.has(t))objectCache.set(t,t.rows.map(r=>Object.fromEntries(t.columns.map((c,i)=>[c,r[i]]))));return objectCache.get(t);};
 const finite=x=>typeof x==='number'&&Number.isFinite(x);
 const num=x=>(x===''||x===null||x===undefined||x==='99999'||x==='n/a')?null:(Number.isFinite(Number(x))?Number(x):null);
 const canonical=(d,id)=>d.aliases[id]||id;
@@ -62,7 +63,7 @@ function occurrenceRows(d,samples,f,selectedOnly=false){
 function matrix(d,samples,f){
  const ids=f.taxa.length?[...f.taxa]:[...new Set(samples.flatMap(s=>s.occurrences.map(o=>o.varnum)))].sort((a,b)=>Number(a)-Number(b));
  return {columns:['SAMCODE',...ids.map(id=>'VARNUM_'+id)],rows:samples.map(s=>{
-  const row={SAMCODE:s.id};for(const id of ids){const codes=[...new Set(s.occurrences.filter(o=>o.varnum===id).map(o=>o.code))];row['VARNUM_'+id]=codes.length?codes.join('|'):null;}return row;
+  const row={SAMCODE:s.id},byTaxon=new Map();for(const o of s.occurrences){if(!byTaxon.has(o.varnum))byTaxon.set(o.varnum,new Set());byTaxon.get(o.varnum).add(o.code);}for(const id of ids){const codes=byTaxon.get(id);row['VARNUM_'+id]=codes?[...codes].join('|'):null;}return row;
  })};
 }
 function manifest(d,samples,f){return {application:'Packrat Midden Explorer',version:d.version,created_utc:new Date().toISOString(),source:d.source,doi:d.doi,filters:f,sample_count:samples.length,sample_ids:samples.map(s=>s.id),map_missing_coordinates:samples.filter(s=>s.lat===null).length,context_included:false,case_aliases:d.aliases,source_files:d.audit.source_files,semantics:{sample_unit:'SAMCODE; multiple samples may share a locality',calibration:'IntCal13, CALIB 7.0.4; BP is before 1950',display_age:'Youngest matching preferred point age; null if unavailable',interval_matching:'Overlap of absolute calibrated age envelope, not full probability density',missing_taxon:'Not recorded is not confirmed absence',climate:'Modern climatology, not reconstructed paleo-climate'}};}

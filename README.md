@@ -2,6 +2,10 @@
 
 A complete, static research interface for the **USGS North American Packrat Midden Database, Version 5.0**. The explorer is the home page of the GitHub Pages site. No account, API key, backend, or browser package installation is needed.
 
+## Version 1.1 improvements
+
+The initial data bundle is 78% smaller (16.1 MB → 3.6 MB, before transfer compression). Full source tables load only when needed. Cached records and reusable map markers reduce repeated work. The offline country layer is removed when an online basemap is selected; the legend sits below the map. Quick time windows, removable filter chips, sidebar/map controls, row-count selection and visible ZIP progress shorten common tasks.
+
 ## Open it now
 
 Unzip the project, keep the folders together, and open **`site/index.html`** in your browser. Core mapping, filters and downloads work without internet. The offline map uses bundled country outlines; detailed online basemaps are optional.
@@ -64,7 +68,9 @@ Missing numeric values (`99999`, blanks, `n/a`) become null in normalized output
 | `site/index.html` | Main explorer page |
 | `site/app.js`, `site/style.css` | Interface and presentation |
 | `site/core.js` | Pure filtering and export logic |
-| `site/data/database.js` | Generated complete database |
+| `site/data/explorer.js` | Compact initial exploration data |
+| `site/data/details.js` | Complete source tables, loaded on demand |
+| `site/loader.js` | Data expansion and on-demand loading |
 | `site/data/audit.json` | Source hashes and join audit |
 | `site/vendor/` | Leaflet, JSZip, Natural Earth outlines and licenses |
 | `data/raw/` | Unchanged uploaded CSVs, README, dictionary and metadata |

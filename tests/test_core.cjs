@@ -1,5 +1,5 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
-const C=require('../site/core.js');const ctx={window:{}};vm.runInNewContext(fs.readFileSync(require.resolve('../site/data/database.js'),'utf8'),ctx);const D=JSON.parse(JSON.stringify(ctx.window.MIDDEN_DATA));
+const C=require('../site/core.js');const D=require('./load_data.cjs')();
 let passed=0;function test(name,fn){fn();passed++;console.log('PASS '+name);}const query=x=>({...C.defaults,taxa:[],...x});
 test('Complete release counts',()=>{assert.equal(D.samples.length,3331);assert.equal(C.table(D,5).rows.length,29393);assert.equal(C.table(D,3).rows.length,3843);assert.equal(Object.keys(D.tables).length,20);assert.equal(C.filter(D,query({})).samples.length,3331);});
 test('All occurrence rows joined exactly once, including case-only IDs',()=>{assert.equal(D.samples.reduce((n,s)=>n+s.occurrences.length,0),29393);assert.equal(D.samples.reduce((n,s)=>n+s.all_ages.length,0),3843);for(const alias of Object.keys(D.aliases))assert(D.samples.some(s=>s.id===D.aliases[alias]));});
